@@ -1,0 +1,94 @@
+<ion-view view-title="功能详测">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          消息类型
+        </div>
+        <select id="msgType" name="msgType">
+          <option value="PRIVATE">PRIVATE</option>
+          <option value="CHATROOM">CHATROOM</option>
+          <option value="CUSTOMER_SERVICE">CUSTOMER_SERVICE</option>
+          <option value="DISCUSSION">DISCUSSION</option>
+          <option value="GROUP">GROUP</option>
+          <option value="SYSTEM">SYSTEM</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          会话通知提醒状态
+        </div>
+        <select id="alertType" name="alertType">
+          <option value="DO_NOT_DISTURB">DO_NOT_DISTURB</option>
+          <option value="NOTIFY">NOTIFY
+          </option>
+        </select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          method
+        </div>
+        <select id='cmdType'>
+          <option value='getConversationList'>getConversationList</option>
+          <option value='getConversation'>getConversation</option>
+          <option value='setConversationToTop'>setConversationToTop</option>
+          <option value='removeConversation'>removeConversation</option>
+          <option value='clearConversations'>clearConversations</option>
+          <option value='getConversationNotificationStatus'>getConversationNotificationStatus</option>
+          <option value='setConversationNotificationStatus'>setConversationNotificationStatus</option>
+          <option value='getLatestMessages'>getLatestMessages</option>
+          <option value='getHistoryMessages'>getHistoryMessages</option>
+          <option value='getHistoryMessagesByObjectName'>getHistoryMessagesByObjectName</option>
+          <option value='getRemoteHistoryMessages'>getRemoteHistoryMessages</option>
+          <option value='joinGroup'>joinGroup</option>
+          <option value='syncGroup'>syncGroup</option>
+          <option value='quitGroup'>quitGroup</option>
+          <option value='joinChatRoom'>joinChatRoom</option>
+          <option value='quitChatRoom'>quitChatRoom</option>
+          <option value='getConnectionStatus'>getConnectionStatus</option>
+          <option value='addToBlacklist'>addToBlacklist</option>
+          <option value='removeFromBlacklist'>removeFromBlacklist</option>
+          <option value='getBlacklistStatus'>getBlacklistStatus</option>
+          <option value='getBlacklist'>getBlacklist</option>
+          <option value='setNotificationQuietHours'>setNotificationQuietHours</option>
+          <option value='removeNotificationQuietHours'>removeNotificationQuietHours</option>
+          <option value='getNotificationQuietHours'>getNotificationQuietHours</option>
+          <option value='getCurrentUserId'>getCurrentUserId</option>
+          <option value='clearMessages'>clearMessages</option>
+          <option value='getTotalUnreadCount'>getTotalUnreadCount</option>
+          <option value='getUnreadCount'>getUnreadCount</option>
+          <option value='getUnreadCountByConversationTypes'>getUnreadCountByConversationTypes</option>
+          <option value='setMessageReceivedStatus'>setMessageReceivedStatus</option>
+          <option value='clearMessagesUnreadStatus'>clearMessagesUnreadStatus</option>
+          <option value='setMessageExtra'>setMessageExtra</option>
+          <option value='getTextMessageDraft'>getTextMessageDraft</option>
+          <option value='saveTextMessageDraft'>saveTextMessageDraft</option>
+          <option value='clearTextMessageDraft'>clearTextMessageDraft</option>
+          <option value='setMessageSentStatus'>setMessageSentStatus</option>
+          <option value='clearConversations'>clearConversations</option>
+          <option value='logout'>logout</option>
+          <option value='deleteMessages'>deleteMessages</option>
+          <option value='createDiscussion'>createDiscussion</option>
+          <option value='getDiscussion'>getDiscussion</option>
+          <option value='setDiscussionName'>setDiscussionName</option>
+          <option value='addMemberToDiscussion'>addMemberToDiscussion</option>
+          <option value='removeMemberFromDiscussion'>removeMemberFromDiscussion</option>
+          <option value='quitDiscussion'>quitDiscussion</option>
+          <option value='setDiscussionInviteStatus'>setDiscussionInviteStatus</option>
+        </select>
+      </label>
+
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input id='recID' placeholder="recID" type="text">
+        </label>
+        <button class="button button-small" ng-click='excute()'>
+          Excute
+        </button>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

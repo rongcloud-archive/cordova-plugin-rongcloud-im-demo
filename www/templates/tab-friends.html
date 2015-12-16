@@ -1,0 +1,31 @@
+<ion-view view-title="通讯录">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item item-divider">
+         联系人
+      </ion-item>
+
+      <ion-item ng-repeat="friend in friends" class="item-thumbnail-left"  href="#/tab/friendInfo/{{friend.id}}/PRIVATE">
+        <img ng-src="{{friend.portrait||'img/personPhoto.png'}}">
+        <h2>{{friend.username}}</h2>
+        <p></p>
+      </ion-item>
+
+      <ion-item class="item item-divider">
+         群组
+      </ion-item>
+      <ion-item ng-repeat="group in groups" class="item-thumbnail-left"  href="#/tab/groupInfo/{{group.id}}/GROUP">
+        <img ng-src="{{group.portrait||'img/personPhoto.png'}}">
+        <h2>{{group.name}}</h2>
+        <p>{{group.number}}/{{group.max_number}}</p>
+        <p>{{group.introduce}}</p>
+      </ion-item>
+      <!-- <ion-item ng-repeat="item in items" class="item-thumbnail-left">
+        <img ng-src="{{item.img}}">
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
+     </ion-item> -->
+
+    </ion-list>
+  </ion-content>
+</ion-view>

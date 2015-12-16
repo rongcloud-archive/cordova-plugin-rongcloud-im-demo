@@ -1,0 +1,33 @@
+
+<html>
+<head>
+  <title>Jasmine Spec Example</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.3.4/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-2.3.4/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-2.3.4/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-2.3.4/jasmine-html.js"></script>
+
+  <!-- <script type="text/javascript" src="spec/RongCloudLibPlugin.js"></script> -->
+    <script type="text/javascript" src="spec/RongCloudLibPluginSuite.js"></script>
+
+  <script type="text/javascript">
+
+	var jasmineEnv = jasmine.getEnv();
+  var htmlReporter = new jasmine.HtmlReporter();
+
+    jasmineEnv.addReporter(htmlReporter);
+
+	jasmineEnv.specFilter = function(spec) {
+		return htmlReporter.specFilter(spec);
+    };
+
+	window.onload = function() {
+		jasmineEnv.execute();
+    };
+  </script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<ion-view cache-view="false" title="对话列表">
+  <!--  <ion-nav-buttons side="left">
+ <button class="button button-clear" ng-click="goBack()"><i class="icon ion-arrow-left-c" ></i> Back</button>
+</ion-nav-buttons>-->
+
+  <ion-content>
+    <!--    <ion-list id="lstContent">
+      <ion-item ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.targetId}}/{{friend.conversationType}}">
+        {{friend.convertsationTitle}} : {{friend.latestContent}}
+      </ion-item>
+    </ion-list>-->
+
+    <div class="list" id="lstContent">
+
+      <a class="item item-thumbnail-left" data-id="{{friend.targetId}}" data-type="{{friend.conversationType}}" href="#/app/friend/{{friend.targetId}}/{{friend.conversationType}}" id="{{friend.targetId}}" ng-repeat="friend in friends">
+
+        <img ng-src="img/personPhoto.png">
+        <h2>{{ friend.conversationTitle }}&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="badge badge-assertive unreadcount" ng-hide="friend.unreadMessageCount == '0'">{{ friend.unreadMessageCount }}</span>
+        </h2>
+        <h4 class="subTitle" ng-bind-html="friend.latestMessage"></h4>
+        <!--<h4>{{ friend.latestContent }}</h4>-->
+      </a>
+
+    </div>
+    <div class="padding">
+        <button type="button" class="button button-block button-positive" ng-click="clearConversition()">Clear</button>
+    </div>
+    <div>{{ lstResult }}</div>
+    <!-- <div><textarea cols="150" rows="500">{{ lstResult }}</textarea></div> -->
+  </ion-content>
+</ion-view>

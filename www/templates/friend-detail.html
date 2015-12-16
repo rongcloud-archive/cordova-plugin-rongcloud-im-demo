@@ -1,0 +1,48 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view title="{{target.username}}" cache-view="false" hide-tabs>
+  <ion-content has-footer="true" padding="true" style="height: calc(100vh - 180px);">
+
+      <ion-refresher on-refresh="doRefresh()"
+                             pulling-text="Pull to load more..."
+                             refreshing-text="Refreshing!"
+                             refreshing-icon="ion-loading-b">
+
+      </ion-refresher>
+      <ol id="lstMessage">
+       <li ng-repeat="message in hisMsgs" id="msg_{{message.messageId}}"  data-messageid="{{message.messageId}}">
+         <div ng-if="message.senderUserId != curUID " class="message"><div ng-include src="buildUrl(message.objectName)"></div></div>
+         <div ng-if="message.senderUserId == curUID " class="message me" style="text-align: right;" ><div ng-include src="buildUrl(message.objectName)"></div></div>
+       </li>
+      </ol>
+
+  </ion-content>
+
+  <ion-footer-bar style="height:auto;">
+    <ion-list>
+
+      <ion-item class="item-input-inset" style="height:40px;border:none">
+        <label class="item-input-wrapper">
+          <input id='msgContent' placeholder="消息内容" type="text">
+        </label>
+        <button class="button button-small" ng-click='sendMsg()'>
+          Send
+        </button>
+      </ion-item>
+
+      <ion-item class="item-divider">
+        <a class="button button-icon icon ion-happy-outline" href="#" title="表情" id="RongIMexpression"></a>
+        <a class="button button-icon icon ion-images" href="#" title="相册" id="butAlbum"></a>
+        <a class="button button-icon icon ion-ios-camera-outline" href="#" title="拍摄" id="butTakePic"></a>
+        <a class="button button-icon icon ion-location" href="#" title="地点" id="butLocation"></a>
+        <a class="button button-icon icon ion-ios-flower-outline" href="#" title="图文" id="butRichContent"></a>
+        <a class="button button-icon icon ion-volume-medium" href="#" title="语音" id="butVoice"></a>
+        <a class="button button-icon icon ion-plus-round" href="#" title="更多..." id="showMore"></a>
+      </ion-item>
+    </ion-list>
+  </ion-footer-bar>
+</ion-view>

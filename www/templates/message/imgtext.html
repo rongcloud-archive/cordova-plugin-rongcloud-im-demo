@@ -1,0 +1,6 @@
+<div class="title">{{message.content.title}}</div>
+<div class="right"><img ng-src='{{message.content.imageUrl}}'>
+  <div class="desc"> {{message.content.description}}'
+  </div>
+</div>
+<div ng-if="message.conversationType == 'GROUP' ">　　{{message.senderUserId}}</div>

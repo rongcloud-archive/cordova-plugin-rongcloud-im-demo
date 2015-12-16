@@ -1,0 +1,15 @@
+<ion-view view-title="好友信息">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <img ng-src="{{Target.portrait||'img/personPhoto.png'}}">
+        <h2>{{Target.username}}</h2>
+        <p class="subTitle">ID: {{Target.id}}</p>
+      </ion-item>
+      <ion-item ng-click='sendMsg()'>发消息</ion-item>
+      <ion-toggle  ng-model="settings.inBlackList" ng-change="chBlackList()">
+          加入黑名单
+      </ion-toggle>
+    </ion-list>
+  </ion-content>
+</ion-view>

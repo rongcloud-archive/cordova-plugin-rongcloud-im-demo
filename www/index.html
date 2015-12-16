@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src='js/jquery-1.8.2.min.js'></script>
+    <script type="text/javascript" src="js/jquery.qqFace.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/testController.js"></script>
+    <script src="js/testDetailController.js"></script>
+    <script src="js/conversation/controller.js"></script>
+    <script src="js/login/controller.js"></script>
+    <script src="js/friend/controller.js"></script>
+    <script src="js/services.js"></script>
+    <!-- <script src="js/RongIMClient-0.9.13.min.js"></script>
+    <script src="js/RongIMClient.emoji-0.9.2.min.js"></script>
+    <script src="js/RongIMClient.voice-0.9.1.min.js"></script> -->
+    <script src='js/Util.js'></script>
+    <script src='js/angular-ios9-uiwebview.patch.js'></script>
+    <style>
+      /*********************************************************/
+      .comment{width:680px; margin:20px auto; position:relative}
+      .comment h3{height:28px; line-height:28px}
+      .com_form{width:100%; position:relative}
+      .input{width:99%; height:60px; border:1px solid #ccc}
+      .com_form p{height:28px; line-height:28px; position:relative}
+      span.emotion{width:42px; height:20px; background:url(icon.gif) no-repeat 2px 2px; padding-left:20px; cursor:pointer}
+      span.emotion:hover{background-position:2px -28px}
+      .qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
+      .qqFace table td{padding:0px;}
+      .qqFace table td img{cursor:pointer;border:1px #fff solid;}
+      .qqFace table td img:hover{border:1px #0066cc solid;}
+      #show{width:680px; margin:20px auto}
+
+      /*********************************************************/
+    </style>
+  </head>
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <body ng-app="cordovaim">
+    <ion-nav-view>
+    </ion-nav-view>
+  </body>
+</html>

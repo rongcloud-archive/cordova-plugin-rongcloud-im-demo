@@ -1,0 +1,7 @@
+<ion-view view-title="黑名单">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="friend in blacklist">{{friend.username}}<span class="item-note" ng-click="rmFromBlacklist('{{friend.id}}')">移出黑名单</span></ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

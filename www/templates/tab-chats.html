@@ -1,0 +1,18 @@
+<ion-view cache-view="false" view-title="会话">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" data-id="{{friend.targetId}}" data-type="{{friend.conversationType}}" href="#/tab/friend/{{friend.targetId}}/{{friend.conversationType}}" id="{{friend.targetId}}" ng-repeat="friend in friends">
+        <img ng-src="{{friend.portrait||'img/personPhoto.png'}}">
+        <h2>{{ friend.conversationTitle }}
+           <span class="badge badge-assertive unreadcount" ng-hide="friend.unreadMessageCount == '0'">{{ friend.unreadMessageCount }}</span>
+        </h2>
+        <p  class="subTitle" ng-bind-html="friend.latestMessage"></p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <!-- <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button> -->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

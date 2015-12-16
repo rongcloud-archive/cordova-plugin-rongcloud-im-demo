@@ -1,0 +1,4 @@
+<!-- <span class="location_img" style="background-image: url('{{message.content.imagePath}}')"></span> -->
+<img ng-src='{{message.content.imagePath}}' />
+<span class="location_desc"> {{message.content.poi}} </span>
+<div ng-if="message.conversationType == 'GROUP' ">　　{{message.senderUserId}}</div>

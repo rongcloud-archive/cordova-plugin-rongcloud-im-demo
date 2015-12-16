@@ -1,0 +1,8 @@
+<div class="detail voice">
+  <div class="second"> {{message.content.duration}}''
+     <a class="button button-icon icon ion-volume-medium" href="javascript:void(0)" title="播放" ng-click="play('{{message.content.voicePath}}')"></a>
+  </div>
+    <!-- <button ng-click="play('{{message.content.voicePath}}')" class="icon-playing">Play</button> -->
+
+</div>
+<div ng-if="message.conversationType == 'GROUP' ">　　{{message.senderUserId}}</div>

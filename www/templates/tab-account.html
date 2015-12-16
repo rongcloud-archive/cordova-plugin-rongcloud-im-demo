@@ -1,0 +1,24 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <img ng-src="{{User.portrait||'img/personPhoto.png'}}">
+        <h2>{{User.username}}</h2>
+        <p class="subTitle">ID: {{User.id}}</p>
+      </ion-item>
+      <ion-toggle  ng-model="settings.enableFriends">
+          系统消息
+      </ion-toggle>
+      <ion-item>隐私 <span class="item-note" ng-click="goBlacklist()">黑名单</span></ion-item>
+      <ion-item class="item-icon-right" ng-click="logout()">
+        退出帐号
+        <i class="icon ion-log-out"></i>
+      </ion-item>
+      <ion-item class="item-icon-right" ng-click="goTest()">
+        测试
+        <i class="icon ion-arrow-right-c"></i>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view view-title="群组信息">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <img ng-src="{{Target.portrait||'img/personPhoto.png'}}">
+        <h2>{{Target.name}}</h2>
+        <p class="subTitle">群成员{{Target.number}}人</p>
+      </ion-item>
+      <ion-item ng-click='sendMsg()'>发起群聊</ion-item>
+      <ion-item>添加新成员(待完成)</ion-item>
+
+      <ion-item ng-repeat="member in members" class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" href="#/tab/friendInfo/{{member.id}}/GROUP">
+        <img ng-src="img/personPhoto.png">
+        <h2>{{ member.id }}
+        </h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,4 @@
+<div class="detail imageMsgWrap">
+  <img ng-click="openImage('{{message.content.imageUrl}}')" tapmode="" class="imageMsg" ng-src="{{message.content.thumbPath}}" />
+</div>
+<div ng-if="message.conversationType == 'GROUP' ">　　{{message.senderUserId}}</div>

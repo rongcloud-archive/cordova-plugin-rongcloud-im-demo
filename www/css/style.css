@@ -1,0 +1,69 @@
+/* Empty. Add your own CSS if you like */
+/*.messages {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+.messages li {
+	display:block;
+	clear:both;
+	max-width:50%;
+	margin:0 0 1rem 0;
+	padding:0;
+}
+
+.messages li.me {
+	float:right;
+}
+
+.messages li.me img {
+	float:right;
+}
+
+.messages div {
+	border-radius:.75rem;
+	background:#e6e5eb;
+	color:#383641;
+	padding:.6875rem;
+	margin:0;
+	font-size:.875rem;
+}
+
+.messages li.me div {
+	background:#158ffe;
+	color:#fff;
+}
+
+.messages img {
+	display:block;
+	max-width:65%;
+	border-radius:.75rem;
+}*/
+
+.message {
+	display:block;
+	clear:both;
+	max-width:50%;
+	margin:0 0 1rem 0;
+	/*padding:0;*/
+  border-radius:.75rem;
+  background:#e6e5eb;
+  color:#383641;
+	padding:.6875rem;
+	/*margin:0;*/
+	font-size:.875rem;
+}
+
+
+.message img {
+	display:block;
+	max-width:65%;
+	border-radius:.75rem;
+}
+
+.me {
+  background:#b3eeb6;
+	color:#fff;
+  float:right;
+}
