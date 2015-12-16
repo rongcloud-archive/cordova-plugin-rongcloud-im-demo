@@ -7,6 +7,7 @@
 ```
 npm install -g cordova ionic
 
+```
 如有必要，使用 `sudo npm`
 
 ### 安装依赖库
