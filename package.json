@@ -28,7 +28,7 @@
     "cordova-plugin-camera",
     "cordova-plugin-media",
     "cordova-plugin-file-transfer",
-    "cn.rongcloud.imlib"
+    "cordova-plugin-rongcloud-im"
   ],
   "cordovaPlatforms": [
     "ios",
