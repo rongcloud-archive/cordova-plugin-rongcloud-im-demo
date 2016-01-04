@@ -69,10 +69,13 @@ var myUtil = {
       var conversationTitle = conversation.conversationTitle;
       var title = '';
       var senderUserId = conversation.senderUserId;
+      var uname;
       conversation.sentTime = time;
+
       switch (conversationType) {
         case 'PRIVATE':
-          title = user.username;
+          uname = user ? user.username : '陌生人';
+          title = uname;
           break;
         case 'DISCUSSION':
           var aa = conversationTitle;
@@ -80,7 +83,13 @@ var myUtil = {
           break;
         case 'GROUP':
           title = targetId;
-          title = '群组(' + user.name + ')';
+          uname = user ? user.name : '未知群'
+          title = '群组(' + uname + ')';
+        case 'SYSTEM':
+          title = targetId;
+          uname = user ? user.name : '未知'
+          title = '系统消息(' + targetId + ')';
+
       }
       conversation.conversationTitle = title;
       var objectName = conversation.objectName;
@@ -127,7 +136,7 @@ var myUtil = {
       }
       conversation.latestMessage = text;
       if(conversationType == 'GROUP'){conversation.latestMessage = senderUserId + ':' +text;}
-      conversation.portrait = user.portrait;
+      conversation.portrait = user ? user.portrait : '';
       //  alert('resolveCon:'+conversation.latestMessage );
     } catch (e) {
       alert('resolveCon error:'+e);

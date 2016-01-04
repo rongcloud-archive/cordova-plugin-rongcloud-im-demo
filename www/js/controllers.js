@@ -79,15 +79,15 @@ angular.module('cordovaim.controllers', [])
       console.log("getFriend err:" + JSON.stringify(err));
     }
   });
-  serverService.getAllGroups().then(function(ret, err){
+  serverService.getMyGroups().then(function(ret, err){
     if(ret){
-      console.log("getAllGroups:" + JSON.stringify(ret));
+      console.log("getMyGroups:" + JSON.stringify(ret));
       $scope.groups = ret.data.result;
       Groups.set(ret.data.result);
 
     }
     if(err){
-      console.log("getAllGroups err:" + JSON.stringify(err));
+      console.log("getMyGroups err:" + JSON.stringify(err));
     }
   });
   $scope.logout = function() {
@@ -219,18 +219,18 @@ angular.module('cordovaim.controllers', [])
   }
 
   $scope.logout = function() {
-    RongCloudLibPlugin.logout(
+    RongCloudLibPlugin.disconnect({isReceivePush: true},
       function(ret, err) {
         if (ret) {
-          console.log('logout:' + JSON.stringify(ret));
+          console.log('disconnect:' + JSON.stringify(ret));
           $ionicHistory.clearCache();
           $state.go('login');
           // $scope.$emit('$destroy');
           // $window.location.reload(true);
         }
         if (err) {
-          console.log('logout error:' + JSON.stringify(err));
-          alert('logout error:' + JSON.stringify(err));
+          console.log('disconnect error:' + JSON.stringify(err));
+          alert('disconnect error:' + JSON.stringify(err));
         }
       }
     );

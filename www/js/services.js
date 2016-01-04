@@ -110,7 +110,8 @@ angular.module('cordovaim.services', [])
    var nonce = Math.floor(Math.random() * 1000000);
    var timestamp = Date.now();
    var signature = SHA1("" + appSecret + nonce + timestamp);
-   var url = "https://api.cn.rong.io/";
+  //  var url = "https://api.cn.rong.io/";
+  var url = "http://webim.demo.rong.io/";
    var headers = {
       "RC-App-Key": _appKey,
       "RC-Nonce": "" + nonce,
@@ -134,9 +135,11 @@ angular.module('cordovaim.services', [])
 })
 .service("serverService",function($http) {
    var FAKE_Sever = "http://webim.demo.rong.io/";
-   var headers = {
-      "Content-Type": "application/x-www-form-urlencoded"
-   };
+  //  var headers = {
+  //     "Content-Type": "application/x-www-form-urlencoded"
+  //  };
+
+   var headers = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' };
    var serverService = {
       login: function(data) {  //data{email:,password:,env}
       console.log(data.email);
@@ -148,18 +151,19 @@ angular.module('cordovaim.services', [])
              };
         return $http(req);
       },
-      getFriend: function(callback) {
+      getFriend: function() {
         var req = {
                  method: "GET",
-                 withCredentials: true,
-                 url: FAKE_Sever + 'get_friend'
+                 url: FAKE_Sever + 'get_friend',
+                 withCredentials: true
              };
         return $http(req);
       },
-      getAllGroups: function(callback) {
+      getMyGroups: function() {
         var req = {
                  method: "GET",
-                 url: FAKE_Sever + 'get_all_group'
+                 url: FAKE_Sever + 'get_my_group',
+                 withCredentials: true
              };
         return $http(req);
       }
