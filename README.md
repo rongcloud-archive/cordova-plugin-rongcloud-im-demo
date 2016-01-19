@@ -20,8 +20,10 @@ ionic state restore
 ```
 
 ### 特别说明
-发送语音信息需要注意:demo中用到了cordova-plugin-media,这个插件需要在android和ios的源码中修改几个参数
+1.发送语音信息需要注意:demo中用到了cordova-plugin-media,这个插件需要在android和ios的源码中修改几个参数
 发送语音需要长按 喇叭按钮
+2.如果没有测试帐号,请在 http://webim.demo.rong.io/WebIMDemo/login.html 注册
+3.demo中没有加好友和群的功能,如果需要这两项操作,请在官网 http://www.rongcloud.cn/downloads 最下端下载安卓或ios的app,用您注册的帐号登录
 
 
 ### ios  
