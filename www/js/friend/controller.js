@@ -287,9 +287,11 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
       };
 
       $cordovaCamera.getPicture(options).then(function(imageURI) {
-        // console.log($stateParams.conversationType + '--' + imageURI);
-        var picPath = imageURI.replace('file://','');
+        var picPath = imageURI;
         console.log("getPicture:" + picPath);
+        if(isIOS){
+            picPath = imageURI.replace('file://','');
+        }
         RongCloudLibPlugin.sendImageMessage({
             conversationType: $stateParams.conversationType,
             targetId: $stateParams.targetId,
