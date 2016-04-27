@@ -3,6 +3,81 @@ angular.module('cordovaim.services', [])
 /**
  * A simple example service that returns some data.
  */
+ .factory('Discussion', function() {
+   var discussion = [
+     { targetId: '2895e3c5-2cdc-46fb-ac4a-073bc11cffdd', conversationType: 'DISCUSSION', conversationTitle: '讨论组myDiscuss', unreadMessageCount: 0, latestMessage: '' }
+   ];
+
+   return {
+     all: function() {
+       return discussion;
+     },
+     set: function(val) {
+       discussion = val;
+     },
+     get: function(roomId) {
+       // Simple index lookup
+       var retIndex = -1;
+       for(var i=0;i<discussion.length;i++){
+          if(rooms[i].id == roomId){
+             retIndex = i;
+             break;
+          }
+       }
+       return retIndex > -1 ? discussion[retIndex] : null;
+     }
+   }
+ })
+ .factory('Chatroom', function() {
+   var rooms = [
+     { targetId: 'Sunny', conversationType: 'CHATROOM', conversationTitle: '聊天室Sunny', unreadMessageCount: 0, latestMessage: '' }
+   ];
+
+   return {
+     all: function() {
+       return rooms;
+     },
+     set: function(val) {
+       rooms = val;
+     },
+     get: function(roomId) {
+       // Simple index lookup
+       var retIndex = -1;
+       for(var i=0;i<rooms.length;i++){
+          if(rooms[i].id == roomId){
+             retIndex = i;
+             break;
+          }
+       }
+       return retIndex > -1 ? rooms[retIndex] : null;
+     }
+   }
+ })
+ .factory('CustomerService', function() {
+   var customes = [
+     { targetId: 'kefu114', conversationType: 'CUSTOMER_SERVICE', conversationTitle: '客服', unreadMessageCount: 0, latestMessage: '' }
+   ];
+
+   return {
+     all: function() {
+       return customes;
+     },
+     set: function(val) {
+       customes = val;
+     },
+     get: function(groupId) {
+       // Simple index lookup
+       var retIndex = -1;
+       for(var i=0;i<customes.length;i++){
+          if(customes[i].id == groupId){
+             retIndex = i;
+             break;
+          }
+       }
+       return retIndex > -1 ? customes[retIndex] : null;
+     }
+   }
+ })
 .factory('Friends', function() {
   // Might use a resource here that returns a JSON array
 
@@ -105,8 +180,8 @@ angular.module('cordovaim.services', [])
    return msgService;
 })
 .service("serverApiService",function($http) {
-  //  var appKey = "lmxuhwagx8tyd";
-   var appSecret = "mN8OA6mAlrxq";
+  //  var appKey = "";
+   var appSecret = "";
    var nonce = Math.floor(Math.random() * 1000000);
    var timestamp = Date.now();
    var signature = SHA1("" + appSecret + nonce + timestamp);

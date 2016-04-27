@@ -812,8 +812,8 @@ angular.module('cordovaim.test.controller', [])
           );
 
           RongCloudLibPlugin.createDiscussion({
-              name: "discussion",
-              userIdList: ["apple", "aaa5936"]
+              name: "myDiscuss",
+              userIdList: ["78274"]
             },
             function(ret, err) {
               if (ret) {

@@ -1,13 +1,5 @@
 angular.module('cordovaim.login.controller', [])
   .controller('LoginCtrl', function($scope, Friends, $rootScope, $state, $ionicHistory, serverService) {
-
-    $scope.data = {
-      username: "",
-      password: ""
-    };
-    //  if (window.RongCloudLibPlugin) {
-    // com.rongCloud.lib required
-
     var initRong = function(token) {
       $rootScope.arrMsgs = new Array();
       $rootScope.arrCons = new Array();
@@ -70,6 +62,7 @@ angular.module('cordovaim.login.controller', [])
         function(ret, err) {
           if (ret) {
             console.log('setOnReceiveMessageListener:' + JSON.stringify(ret));
+            // alert('setOnReceiveMessageListener:' + JSON.stringify(ret));
             $rootScope.arrMsgs.push(JSON.stringify(ret.result.message));
             $rootScope.$apply();
           }

@@ -13,7 +13,15 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
         else if(jsonMsg.conversationType == "GROUP"){
               target = Groups.get(jsonMsg.targetId);
         }
+        else if(jsonMsg.conversationType == "CUSTOMER_SERVICE"){
+              // target = Groups.get(jsonMsg.targetId);
+        }
+        else if(jsonMsg.conversationType == "CHATROOM"){
+              // target = Groups.get(jsonMsg.targetId);
+        }
+        console.log('jsonMsg:', jsonMsg);
         var tmpMsg = myUtil.resolveMsg(jsonMsg);
+        console.log(tmpMsg);
         $scope.hisMsgs.push(tmpMsg);
         // $ionicFrostedDelegate.update();
         $ionicScrollDelegate.scrollBottom(true);
@@ -65,10 +73,13 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
     var isAndroid = ionic.Platform.isAndroid();
     var src = "cordovaIMVoice.amr";
     // var path = "/storage/sdcard0/";  //
-    var path = cordova.file.externalApplicationStorageDirectory;
+    var path = "";
     if(isIOS){
       path = cordova.file.documentsDirectory;
       src = "cordovaIMVoice.wav";
+    }
+    else{
+      path = cordova.file.externalApplicationStorageDirectory;
     }
     var mediaRec;
 
@@ -205,6 +216,9 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
               // var tmpContent = $compile(tmp.content)($scope);
               // tmp.content = tmpContent[0];
               result.push(tmp);
+              // if(tmp.content.thumbPath){
+              //    alert(tmp.content.thumbPath);
+              // }
             }
             $scope.hisMsgs = result;
           }
@@ -230,12 +244,12 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
         function(ret, err) {
           if (ret) {
             console.log("getHistoryMessages:" + JSON.stringify(ret));
-            var result = new Array(),
-              tmp;
+            var result = new Array(),tmp;
             for (var i = ret.result.length - 1; i >= 0; i--) {
               tmp = ret.result[i];
               tmp = myUtil.resolveMsg(tmp);
               result.push(tmp);
+              // alert(JSON.stringify(tmp));
             }
             var hisArr = result.concat($scope.hisMsgs);
             $scope.hisMsgs = hisArr;
@@ -260,6 +274,7 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
           if (ret) {
             if (ret.status == "prepare") {
               // $scope.lstResult = JSON.stringify(ret);
+              console.log(JSON.stringify(ret));
               //消息此时未发送成功，可以加入样式标明；成功后更新样式
               appendNewMsg(ret.result.message, true);
             }
@@ -287,10 +302,14 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
       };
 
       $cordovaCamera.getPicture(options).then(function(imageURI) {
+        // console.log($stateParams.conversationType + '--' + imageURI);
         var picPath = imageURI;
         console.log("getPicture:" + picPath);
         if(isIOS){
             picPath = imageURI.replace('file://','');
+        }
+        if(isAndroid){
+            picPath = imageURI.substring(0, imageURI.indexOf('?'));
         }
         RongCloudLibPlugin.sendImageMessage({
             conversationType: $stateParams.conversationType,
@@ -304,6 +323,7 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
               if (ret.status == "prepare") {
                 //消息此时未发送成功，可以加入样式标明；成功后更新样式
                 appendNewMsg(ret.result.message, true);
+                console.log("prepare:" +  JSON.stringify(ret.result.message));
                 // alert("prepare");
               }
               if (ret.status == "success") {
@@ -860,6 +880,7 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
       // $("#RongIMexpression").trigger('click');
       // $("#showMore").trigger('click');
 
+      $scope.hisMsgs = [];
       $scope.curUID = $rootScope.curUID ? $rootScope.curUID : "";
       $scope.targetId = $stateParams.targetId;
       if($stateParams.conversationType == 'PRIVATE'){
@@ -869,12 +890,48 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
         $scope.target.username = $scope.target.name;
       }
       clearMessagesUnreadStatus();
+      if($stateParams.conversationType == "CUSTOMER_SERVICE"){
+            return;
+      }
+      else if($stateParams.conversationType == "CHATROOM"){
+            RongCloudLibPlugin.joinChatRoom({
+                    chatRoomId: $stateParams.targetId,
+                    defMessageCount: 20
+                }, function (ret, err) {
+                  if(ret){
+                    if (ret.status == 'success')
+                        console.log("joinChatRoom", JSON.stringify(ret));
+                  }
+                  if(err){
+                    alert('joinChatRoom error:' + err.code);
+                  }
+            })
+            return;
+      }
+      else if($stateParams.conversationType == "DISCUSSION"){
+            $scope.hisMsgs = [];
+            RongCloudLibPlugin.addMemberToDiscussion({
+                    discussionId: $stateParams.targetId,
+                    userIdList: [$scope.curUID]
+                }, function (ret, err) {
+                  if(ret){
+                    if (ret.status == 'success')
+                        console.log("addMemberToDiscussion", JSON.stringify(ret));
+                  }
+                  if(err){
+                      console.log('addMemberToDiscussion error:' + err.code);
+                  }
+            })
+      }
+
       getLatestMsg($stateParams.targetId, $stateParams.conversationType);
 
       $scope.$on("$ionicView.enter", function () {
         $ionicScrollDelegate.scrollBottom(true);
         console.log('$ionicView.enter');
       });
+
+
     }
     init();
 

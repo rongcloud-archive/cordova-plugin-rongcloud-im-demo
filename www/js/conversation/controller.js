@@ -1,5 +1,5 @@
 angular.module('cordovaim.conversation.controller', [])
-.controller('conversationCtrl', function($scope, Friends, Groups, newMessageEventService) {
+.controller('conversationCtrl', function($scope, Friends, Groups, Chatroom, CustomerService, Discussion, newMessageEventService) {
 
   var newMsgCallBack = function(d,data){
     console.log('conversation newMessage' + data);
@@ -12,6 +12,8 @@ angular.module('cordovaim.conversation.controller', [])
     else if(jsonMsg.conversationType == "GROUP"){
         target = Groups.get(jsonMsg.targetId);
     }
+
+    console.log('target:' + JSON.stringify(target));
     jsonMsg = myUtil.resolveCon(jsonMsg, 1, target);
     console.log('jsonMsg after resolveCon:' + JSON.stringify(jsonMsg));
     //jsonMsg.sendTime = new Date(jsonMsg.sendTime).toString().split(" ")[4];
@@ -23,6 +25,8 @@ angular.module('cordovaim.conversation.controller', [])
       var index = findInFriends(jsonMsg.targetId);
       if (index > -1) {
         // var $unreadcount = $targetId.find('.unreadcount');
+        if($scope.friends[index].conversationType == 'CHATROOM' || $scope.friends[index].conversationType == 'CUSTOMER_SERVICE')
+           return;
         var unreadMessageCount = parseInt($scope.friends[index].unreadMessageCount);
         unreadMessageCount++;
         $scope.friends[index].unreadMessageCount = unreadMessageCount;
@@ -88,9 +92,13 @@ angular.module('cordovaim.conversation.controller', [])
             else if(result[i].conversationType == "GROUP"){
                 target = Groups.get(result[i].targetId);
             }
+            console.log('target:' + JSON.stringify(target));
             result[i] = myUtil.resolveCon(result[i], 0, target);
             //alert('conversationTitle:'+result[i].conversationTitle);
           }
+          result.unshift(Discussion.all()[0]);
+          result.unshift(Chatroom.all()[0]);
+          result.unshift(CustomerService.all()[0]);
           $scope.$apply(function() {
             $scope.friends = result;
           });

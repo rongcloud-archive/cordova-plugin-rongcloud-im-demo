@@ -173,7 +173,7 @@ angular.module('cordovaim.testdetail.controller', [])
           deleteMessages([1,2]);
           break;
         case 'createDiscussion':
-          createDiscussion('discuss1',["apple", "aaa5936"]);
+          createDiscussion('testDiscuss',["77562"]);
           break;
         case 'getDiscussion':
           getDiscussion(localStorage["discussionId"]);
