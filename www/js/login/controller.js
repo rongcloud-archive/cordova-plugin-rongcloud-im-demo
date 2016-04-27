@@ -1,5 +1,9 @@
 angular.module('cordovaim.login.controller', [])
   .controller('LoginCtrl', function($scope, Friends, $rootScope, $state, $ionicHistory, serverService) {
+    $scope.data = {
+      username: "",
+      password: ""
+    };
     var initRong = function(token) {
       $rootScope.arrMsgs = new Array();
       $rootScope.arrCons = new Array();
