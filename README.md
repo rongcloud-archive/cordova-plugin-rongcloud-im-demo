@@ -12,7 +12,6 @@ npm install -g cordova ionic
 ### 安装依赖库
 
 新建ionic空项目,将package.json和www目录覆盖到新项目下,再执行
-```
 ionic state restore
 ```
 由于ionic版本问题,执行该命令可能会出现问题,主要问题如下
