@@ -34,6 +34,7 @@ ionic state restore
 4. android sdk 22下编译正常,sdk 23有问题,后期我们会做更新解决该问题
 5. 如果没有测试帐号,请在 [http://webim.demo.rong.io/WebIMDemo/login.html](http://webim.demo.rong.io/WebIMDemo/login.html) 注册
 6. demo中没有加好友和群的功能,如果需要这两项操作,请在官网 [http://www.rongcloud.cn/downloads](http://www.rongcloud.cn/downloads) 最下端下载安卓或ios的app,用您注册的帐号登录
+7. demo和插件仅支持在移动端运行,支持android和ios
 
 ### ios  
 appFolder/platforms/ios/appFolder/Plugins/cordova-plugin-media/CDVSound.m   audioFile.recorder前加入

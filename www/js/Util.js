@@ -85,10 +85,12 @@ var myUtil = {
           title = targetId;
           uname = user ? user.name : '未知群'
           title = '群组(' + uname + ')';
+          break;
         case 'SYSTEM':
           title = targetId;
           uname = user ? user.name : '未知'
           title = '系统消息(' + targetId + ')';
+          break;
 
       }
       conversation.conversationTitle = title;

@@ -887,7 +887,12 @@ angular.module('cordovaim.frienddetail.controller', ['ionic'])
         $scope.target = Friends.get($stateParams.targetId);
       }else if($stateParams.conversationType == 'GROUP'){
         $scope.target = Groups.get($stateParams.targetId);
-        $scope.target.username = $scope.target.name;
+        if($scope.target){
+          $scope.target.username = $scope.target.name;
+        }
+        else{
+          $scope.target = { username: '未知群组'}
+        }
       }
       clearMessagesUnreadStatus();
       if($stateParams.conversationType == "CUSTOMER_SERVICE"){

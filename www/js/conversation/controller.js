@@ -84,8 +84,11 @@ angular.module('cordovaim.conversation.controller', [])
         if (ret) {
           console.log('getConversationList:' + JSON.stringify(ret));
           var result = ret.result;
-          var target;
+          var target, discussionIndex = -1;
           for (var i = 0; i < result.length; i++) {
+            if(result[i].conversationType == 'DISCUSSION' && result[i].targetId == Discussion.all()[0].targetId){
+              discussionIndex = i;
+            }
             if(result[i].conversationType == "PRIVATE"){
                 target = Friends.get(result[i].targetId);
             }
@@ -96,7 +99,12 @@ angular.module('cordovaim.conversation.controller', [])
             result[i] = myUtil.resolveCon(result[i], 0, target);
             //alert('conversationTitle:'+result[i].conversationTitle);
           }
-          result.unshift(Discussion.all()[0]);
+          if(discussionIndex > -1){
+             result[discussionIndex].conversationTitle = Discussion.all()[0].conversationTitle;
+          }else{
+             result.unshift(Discussion.all()[0]);
+          }
+
           result.unshift(Chatroom.all()[0]);
           result.unshift(CustomerService.all()[0]);
           $scope.$apply(function() {
